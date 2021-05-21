@@ -21,6 +21,23 @@ in the wiki:
 Thanks to *Raffael Grob* for providing this manual.
 
 
+## Deployment
+The extension is packaged as a docker container that will copy over the .ear into the keycloak.
+
+Use inside helm chart like this:
+
+```
+      - name: extension-provider-scim
+        image: linkyard/scim-for-keycloak-extension@sha256:59a4ca890443f999cacca969234df9d7b5619eda50ad073f5f1505ccadb55e8e
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: DEPLOYMENT_DIR
+          value: /extensions
+        volumeMounts:
+          - name: extensions
+            mountPath: /extensions
+```
+
 ## Keycloak support matrix
 
 |  version | supported          | scim-for-keycloak version  | SCIM-SDK Version |
