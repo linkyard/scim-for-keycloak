@@ -13,6 +13,6 @@ RUN cp scim-for-keycloak-deployment/target/scim-for-keycloak-*.ear scim-for-keyc
 FROM busybox
 
 COPY --from=build scim-for-keycloak-deployment/target/scim-for-keycloak.ear /scim-for-keycloak.ear
-COPY app/src/main/docker/copy-extension.sh /copy-extension.sh
+COPY scim-for-keycloak-deployment/src/main/docker/copy-extension.sh /copy-extension.sh
 
 CMD ["/copy-theme.sh"]
